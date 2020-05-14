@@ -154,8 +154,6 @@ kunstmaanbundles.pagepartEditor = function (window) {
             duration: 300
         });
 
-        $container.empty();
-
         // Check is-deleted checkbox
         $('#' + $targetId + '-is-deleted').prop('checked', true);
 
@@ -163,6 +161,10 @@ kunstmaanbundles.pagepartEditor = function (window) {
         $('#delete-pagepart-modal-' + $targetId).modal('hide');
         $('body').removeClass('modal-open');
         executeEvent('delete', $container);
+
+        $('#delete-pagepart-modal-' + $targetId).on('hidden.bs.modal', function() {
+            $container.empty();
+        });
     };
 
 
